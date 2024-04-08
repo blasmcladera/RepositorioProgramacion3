@@ -128,6 +128,30 @@ public class BinaryTree<T> {
 	   		 }
 	   	 }
 	    }
+	
+	public void entreNiveles(int n,int m) {
+	   	 BinaryTree<T> ab = null;
+	   	 int i=0;
+	   	 Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+	   	 cola.enqueue(this);
+	      cola.enqueue(null);
+	   	 while (!cola.isEmpty()) {
+	   		 ab = cola.dequeue();
+	   		 if (ab != null) {
+	   			 if ((i>=n) && (i<=m))System.out.print(ab.getData()+" ");
+	   			 if (ab.hasLeftChild()) {
+	   				 cola.enqueue(ab.getLeftChild());
+	   			 }
+	   			 if (ab.hasRightChild()) {
+	   				 cola.enqueue(ab.getRightChild());
+	   			 }
+	   		 } else if (!cola.isEmpty()) {
+	   			 i++;
+	   			 System.out.println();
+	   			 cola.enqueue(null);
+	   		 }
+	   	 }
+	    }
 }
 
 

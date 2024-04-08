@@ -17,6 +17,8 @@ public class Pruebas {
 		b.getRightChild().addLeftChild(hdi);
 		b.getRightChild().addRightChild(hdd);
 		b.printNiveles();
+		System.out.println("\n------------");
+		b.entreNiveles(0, 3);
 		in.close();
 	}
 }
