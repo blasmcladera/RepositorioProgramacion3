@@ -4,21 +4,21 @@ import java.util.List;
 import GeneralTree.GeneralTree;
 
 public class GeneradorGeneralTree {
-    public static GeneralTree<Integer> generarArbol(int n, int i) {
-        return generarArbolRecursivo(n, i, 0);
+    public static GeneralTree<Integer> generarArbol(int n, int i, int max) {
+        return generarArbolRecursivo(n, i, 0,max);
     }
 
-    private static GeneralTree<Integer> generarArbolRecursivo(int n, int i, int nivel) {
+    private static GeneralTree<Integer> generarArbolRecursivo(int n, int i, int nivel, int max) {
         if (nivel >= n) {
             return null;
         }
 
         Random random = new Random();
-        GeneralTree<Integer> arbol = new GeneralTree<>(random.nextInt(100));
+        GeneralTree<Integer> arbol = new GeneralTree<>(random.nextInt(max));
 
         int numHijos = random.nextInt(i + 1);
         for (int j = 0; j < numHijos; j++) {
-            GeneralTree<Integer> hijo = generarArbolRecursivo(n, i, nivel + 1);
+            GeneralTree<Integer> hijo = generarArbolRecursivo(n, i, nivel + 1,max);
             if (hijo != null) {
                 arbol.addChild(hijo);
             }

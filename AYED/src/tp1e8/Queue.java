@@ -2,7 +2,7 @@ package tp1e8;
 import java.util.List;
 import java.util.ArrayList;
 public class Queue<T> extends Sequence{
-	private List<T> data;
+	protected List<T> data;
 	public Queue() {
 		super();
 		data = new ArrayList<T>();
