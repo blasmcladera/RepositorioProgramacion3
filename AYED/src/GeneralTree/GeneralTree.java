@@ -105,6 +105,43 @@ public class GeneralTree<T> {
 				nivelRecursivo(child,b+1,n,l);
 			}
 		}
+		}
 	}
-	}
+	
+	public int ancho() {
+        List<T> result = new LinkedList<T>();
+        Queue<GeneralTree<T>> queue = new Queue<GeneralTree<T>>();
+        queue.enqueue(this);
+        queue.enqueue(null);
+
+        while (!queue.isEmpty()) {
+            GeneralTree<T> tree_aux = queue.dequeue();
+            if (tree_aux == null) {
+                if (!queue.isEmpty()) {
+                    queue.enqueue(null);
+                    result.add(null);
+                }
+            } else {
+                result.add(tree_aux.getData());
+                List<GeneralTree<T>> children = tree_aux.getChildren();
+                for (GeneralTree<T> child : children) {
+                    queue.enqueue(child);
+                }
+            }
+        }
+        result.add(null);
+        int cant=0;
+        int cantmax=-1;
+        for (int i=0;i<result.size();i++) {
+        	if (result.get(i)!=null){
+        		cant++;
+        	}
+        	else {
+        		if (cant>cantmax)cantmax=cant;
+        		cant=0;
+        	}
+        }
+        result.clear();
+        return cantmax;
+    }
 }
