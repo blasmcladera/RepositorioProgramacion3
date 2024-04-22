@@ -144,4 +144,26 @@ public class GeneralTree<T> {
         result.clear();
         return cantmax;
     }
+	public boolean esAncestro(T a,T b) {
+		List<GeneralTree<T>> l = new LinkedList<GeneralTree<T>>();
+		l.add(null);
+		buscar(a,l);
+		if (l.get(0)==null) return false;
+		else {
+			GeneralTree<T> aux = l.get(0);
+			l.set(0, null);
+			aux.buscar(b, l);
+			return (l.remove(0)!=null);
+		}
+	}
+	
+	private void buscar(T a, List<GeneralTree<T>> l) {
+		if (data==a) l.set(0,this);
+		else {
+			List<GeneralTree<T>> child1 = children;
+            for (GeneralTree<T> c1 : child1) {
+                c1.buscar(a,l);
+		}
+	}
+	}
 }
