@@ -4,7 +4,7 @@ import tp5.ejercicio1.listaAdy.*;
 public class PruebaTP5e2 {
 
 	public static void main(String[] args) {
-		Recorridos<String> r = new Recorridos();
+		Recorridos<String> r = new Recorridos<String>();
 		Graph<String> ciudades = new AdjListGraph<>();
 		Vertex<String> v1 = ciudades.createVertex("Buenos Aires");
 		Vertex<String> v2 = ciudades.createVertex("Santiago");
